@@ -1,0 +1,6 @@
+,age,num_underage_siblings,num_adult_siblings,can_vote,in_twenties,age_bracket,can_vote_map,num_siblings,has_siblings
+0,18,0,1,True,False,Adult,True,1,True
+1,29,0,0,True,True,Adult,True,0,False
+2,15,1,0,False,False,Adolescent,False,1,True
+3,32,1,1,True,False,Adult,True,2,True
+4,6,0,0,False,False,Child,False,0,False
