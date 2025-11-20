@@ -97,12 +97,7 @@ Try it yourself!
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
 
-INSERT INTO drivers VALUES (6, 'Neo','American',500);
 
-INSERT INTO drivers VALUES (4, 'Thor','Asgard',1000);
-
-
-INSERT INTO drivers VALUES (4, 'Alejandro','Colombia',5000);
 
 
 
@@ -193,8 +188,6 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-SELECT nationality, driver_id FROM drivers
-WHERE victories > 60
 
 
 -- SQLBook: Markup
@@ -260,9 +253,7 @@ Try it yourself!
 -- SQLBook: Code
 # Write your own code
 
-SELECT nationality, MAX(victories) AS max_victories FROM drivers
-GROUP BY nationality
-HAVING MAX(victories) < 71
+
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> IV. Merging </span>
