@@ -13,6 +13,7 @@ You need to run "Execute" on each row, line-by-line. This is <br>
 different from Python, which runs the entire chunk.
 
 -- SQLBook: Code
+-- Active: 1764018784903@@127.0.0.1@5432@postgres
 -- Active: 1710903290079@@127.0.0.1@5432@postgres
 
 DROP TABLE IF EXISTS homework_data;
@@ -59,10 +60,13 @@ Hints:
 - In SQL you only need a single equality "="
 - In SQL use single quotes for logical conditions with strings '...'
 -- SQLBook: Code
+-- Active: 1764018784903@@127.0.0.1@5432@postgres
 -- Active: 1710903290079@@127.0.0.1@5432@postgres@public
 -- Write your own code
 
-
+SELECT * FROM homework_data
+WHERE nationality = 'British'
+ORDER BY driver_name ASC;
 
 -- SQLBook: Markup
 <font size = "5">
@@ -79,10 +83,13 @@ alies, e.g. ``` ... AS ... ```
 
 
 -- SQLBook: Code
+-- Active: 1764018784903@@127.0.0.1@5432@postgres
 -- Active: 1710903290079@@127.0.0.1@5432@postgres@public
 -- Write your own code
 
-
+SELECT COUNT(DISTINCT nationality) AS count_nationality,
+COUNT(*) AS num_rows
+FROM homework_data
 
 
 -- SQLBook: Markup
@@ -97,12 +104,15 @@ alies, e.g. ``` ... AS ... ```
 
 
 -- SQLBook: Code
+-- Active: 1764018784903@@127.0.0.1@5432@postgres
 -- Active: 1710903290079@@127.0.0.1@5432@postgres@public
 -- Write your own code
 
-
-
-
+SELECT driver_id, 
+AVG(lap_times) AS mean_laptimes
+FROM homework_data
+GROUP BY driver_id
+ORDER BY mean_laptimes ASC
 -- SQLBook: Markup
 <font size = "5">
 
@@ -121,9 +131,11 @@ for the code to work correctly.
 
 # Write your own code
 
-
-
-
+SELECT nationality,
+       SUM(lap_times) AS sum_laptimes
+FROM homework_data
+GROUP BY nationality
+Having SUM(lap_times) > 150
 -- SQLBook: Markup
 <font size = "5">
 
@@ -146,6 +158,16 @@ HINT: To insert a string value, use 'single quotations'
 -- SQLBook: Code
 -- Write your own code
 
+DROP TABLE IF EXISTS lap_times;
+CREATE TABLE lap_times (
+    "raceId"       int,
+    "driverId"     int,
+    lap          int,
+    position     int,
+    "time"       varchar(255),  
+    milliseconds int
+);
 
+INSERT INTO lap_times VALUES (1, 2, 3, 4, '01:30:00', 1000)
 
-
+INSERT INTO lap_times VALUES (7, 5, 9, 8, '02:23:00', 2000)
