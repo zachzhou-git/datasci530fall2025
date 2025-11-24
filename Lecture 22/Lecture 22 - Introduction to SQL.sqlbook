@@ -33,6 +33,7 @@ panel on the left:
 
 Delete existing table
 -- SQLBook: Code
+-- Active: 1763623394032@@127.0.0.1@5432@postgres@public
 -- Active: 1710903290079@@127.0.0.1@5432@postgres
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
@@ -97,9 +98,9 @@ Try it yourself!
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
 
+INSERT INTO drivers  VALUES (5, 'Zachary Zhou', 'Chinese',0);
 
-
-
+INSERT INTO drivers  VALUES (6, 'Zepeng Zhou', 'Chinese',0);
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
@@ -187,7 +188,8 @@ Try it yourself!
 with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
-
+SELECT * FROM drivers 
+WHERE  victories > 60;
 
 
 -- SQLBook: Markup
@@ -253,6 +255,14 @@ Try it yourself!
 -- SQLBook: Code
 # Write your own code
 
+SELECT nationality,
+       SUM(victories) AS sum_victories,
+       AVG(victories) AS mean_victories,
+       MIN(victories) AS min_victories,
+       MAX(victories) AS max_victories
+FROM drivers
+GROUP BY nationality
+HAVING MAX(victories) < 72;
 
 
 -- SQLBook: Markup
